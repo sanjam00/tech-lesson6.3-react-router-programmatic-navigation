@@ -1,6 +1,9 @@
 import { useState } from "react"
+import { useOutletContext } from "react-router-dom"
 
 function Login() {
+  //access the login function that is passed as context from Layout.jsx
+  const login = useOutletContext()
   const [username, setUsername] = useState("")
 
   function handleChange(e) {
@@ -9,6 +12,7 @@ function Login() {
 
   function handleLogin(e) {
     e.preventDefault()
+    login()
   }
 
   return (

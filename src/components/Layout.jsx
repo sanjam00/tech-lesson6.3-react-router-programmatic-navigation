@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from "react-router-dom"
+import { Outlet, useNavigate, Navigate } from "react-router-dom"
 import NavBar from "./NavBar"
 import { useState, useEffect } from "react"
 
@@ -27,8 +27,9 @@ function Layout() {
 
   return (
     <div className="layout">
-      {/* pass logout for the logout button */}
-      <NavBar logout={logout} />
+      {/* pass logout for the logout button and add conditional rendering so users have to be logged in to see pages on the site*/}
+      {isLoggedIn ? <NavBar logout={logout} /> : <Navigate to="/login" />}
+
 
       {/* pass the login function to all routes via useOutletContext */}
       <Outlet context={login} />
